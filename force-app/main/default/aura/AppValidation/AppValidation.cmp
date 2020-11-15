@@ -1,0 +1,21 @@
+<aura:component implements="lightning:availableForFlowScreens" access="global">
+    <aura:attribute type="Boolean" name="hasYoutubeChannel"  access="global" />    
+    <aura:attribute type="String" name="channelName"  access="global" />    
+    <aura:attribute type="String" name="subscribers"  access="global" />
+    <aura:attribute name="options" type="List" default="[
+        {'label': 'Yes', 'value': 'true'},
+        {'label': 'No', 'value': 'false'}
+        ]"/>
+    <lightning:radioGroup name="hasYoutubeChannel"
+    aura:id="hasYoutubeChannel"  
+    label="Do you own a youtube channel?"
+    options="{!v.options}"
+    value="{!v.hasYoutubeChannel}"
+    onchange="{!c.handleChange}"
+    type="radio"
+    required="true"/>  
+    <aura:if isTrue="{!v.hasYoutubeChannel}">
+        <lightning:input type="text" name="channelName" label="Channel" value="{!v.channelName}" required="true"/>
+        <lightning:input type="text" name="subscribers" label="Subscribers" value="{!v.subscribers}" required="true"/>
+    </aura:if>
+</aura:component>	
