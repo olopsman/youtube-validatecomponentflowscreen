@@ -1,10 +1,12 @@
 <aura:component implements="lightning:availableForFlowScreens" access="global">
-    <aura:attribute type="Boolean" name="hasYoutubeChannel"  access="global" />    
+    <aura:attribute type="String" name="hasYoutubeChannel"  access="global" />    
     <aura:attribute type="String" name="channelName"  access="global" />    
-    <aura:attribute type="String" name="subscribers"  access="global" />
+    <aura:attribute type="Integer" name="subscribers"  access="global" />
+    <aura:attribute type="String" name="dateStarted"  access="global" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
     <aura:attribute name="options" type="List" default="[
-        {'label': 'Yes', 'value': 'true'},
-        {'label': 'No', 'value': 'false'}
+        {'label': 'Yes', 'value': 'Yes'},
+        {'label': 'No', 'value': 'No'}
         ]"/>
     <lightning:radioGroup name="hasYoutubeChannel"
     aura:id="hasYoutubeChannel"  
@@ -14,8 +16,9 @@
     onchange="{!c.handleChange}"
     type="radio"
     required="true"/>  
-    <aura:if isTrue="{!v.hasYoutubeChannel}">
-        <lightning:input type="text" name="channelName" label="Channel" value="{!v.channelName}" required="true"/>
-        <lightning:input type="text" name="subscribers" label="Subscribers" value="{!v.subscribers}" required="true"/>
+    <aura:if isTrue="{!v.hasYoutubeChannel == 'Yes'}">
+        <lightning:input type="text" aura:id="channelName" name="channelName" label="Channel" value="{!v.channelName}" required="true"/>
+        <lightning:input type="number" aura:id="subscribers" name="subscribers" label="Subscribers" value="{!v.subscribers}" required="true"/>
+        <lightning:input type="date" aura:id="dateStarted" label="Date Started" value="{!v.dateStarted}" onchange="{!c.handleDateChange}" required="true"/>
     </aura:if>
 </aura:component>	

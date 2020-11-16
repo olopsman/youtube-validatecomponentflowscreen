@@ -1,3 +1,6 @@
 <design:component >
-
+    <design:attribute name="hasYoutubeChannel" label="Has Youtube Channel?" description="Has Youtube Channel?"  />
+    <design:attribute name="channelName" label="Channel Name" description="Channel Name"  />
+    <design:attribute name="subscribers" label="Subscribers" description="Subscribers"  />
+    <design:attribute name="dateStarted" label="Date Started" description="Date Started"  />
 </design:component>
